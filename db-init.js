@@ -1,11 +1,11 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { Sequelize } = require('sequelize');
 
 const db = new Sequelize({
     dialect: 'sqlite',
     storage: './database.sqlite',
 });
 
-require('./models/tag.js');
+require('./models/cities.js');
 
 const force = process.argv.includes('--force') || process.argv.includes('-f');
 
