@@ -14,7 +14,7 @@ module.exports = {
     async execute(interaction) {
         const name = interaction.options.getString('name');
 
-        const cityAlreadyExists = await Cities.findOne({ where: { userId: interaction.user.id } });
+        const cityAlreadyExists = await Cities.findByPk(interaction.user.id);
 
         if (!cityAlreadyExists) {
             try {
