@@ -4,7 +4,7 @@ const { SlashCommandBuilder, EmbedBuilder, Embed } = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('city')
-        .setDescription('View your city!'),
+        .setDescription('View your city'),
     async execute(interaction) {
         const cityExists = await Cities.findByPk(interaction.user.id);
 
