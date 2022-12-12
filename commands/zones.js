@@ -26,7 +26,7 @@ module.exports = {
             const cityZonesEmbed = new EmbedBuilder()
                 .setColor(0x73a0d0)
                 .setTitle(`${cityZones.name} | Zones`)
-                .setDescription('Each zones affects different stats. Use `/upgrade zone [id]` to upgrade them.')
+                .setDescription('Each zone affects different stats. Use `/upgrade zone [id]` to upgrade them.')
                 .addFields(
                     { name: `🏠 Residential zones (\`res\`): Level ${cityZones.residentialLevel}/15`, value: `Costs $${costs.resCost} and ${costs.resResources} resources.` },
                     { name: `🏢 Commercial zones (\`com\`): Level ${cityZones.commercialLevel}/15`, value: `Costs $${costs.comCost} and ${costs.comResources} resources.` },
