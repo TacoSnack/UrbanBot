@@ -10,7 +10,7 @@ module.exports = {
 
         if (cityExists) {
             const cityZones = await Cities.findOne({
-                attributes: ['name', 'residentialLevel', 'commercialLevel', 'industrialLevel'],
+                attributes: ['userId', 'name', 'residentialLevel', 'commercialLevel', 'industrialLevel'],
                 where: { userId: interaction.user.id },
             });
 
@@ -23,14 +23,20 @@ module.exports = {
                 indResources: (cityZones.industrialLevel + 1) * 1500,
             }
 
+            const maxes = {
+                resMax: cityZones.residentialLevel === 15,
+                comMax: cityZones.commercialLevel === 15,
+                indMax: cityZones.industrialLevel === 15,
+            }
+
             const cityZonesEmbed = new EmbedBuilder()
                 .setColor(0x73a0d0)
                 .setTitle(`${cityZones.name} | Zones`)
                 .setDescription('Each zone affects different stats. Use `/upgrade zone [id]` to upgrade them.')
                 .addFields(
-                    { name: `🏠 Residential zones (\`res\`): Level ${cityZones.residentialLevel}/15`, value: `Costs $${costs.resCost} and ${costs.resResources} resources.` },
-                    { name: `🏢 Commercial zones (\`com\`): Level ${cityZones.commercialLevel}/15`, value: `Costs $${costs.comCost} and ${costs.comResources} resources.` },
-                    { name: `🏭 Industrial zones (\`ind\`): Level ${cityZones.industrialLevel}/15`, value: `Costs $${costs.indCost} and ${costs.indResources} resources` },
+                    { name: `🏠 Residential zones (\`res\`): Level ${cityZones.residentialLevel}/15${maxes.resMax ? ' ✅' : ''}`, value: maxes.resMax ? 'This zone is maxed!' : `Costs $${costs.resCost} and ${costs.resResources} resources.` },
+                    { name: `🏢 Commercial zones (\`com\`): Level ${cityZones.commercialLevel}/15${maxes.comMax ? ' ✅' : ''}`, value: maxes.comMax ? 'This zone is maxed!' : `Costs $${costs.comCost} and ${costs.comResources} resources.` },
+                    { name: `🏭 Industrial zones (\`ind\`): Level ${cityZones.industrialLevel}/15${maxes.indMax ? ' ✅' : ''}`, value: maxes.indMax ? 'This zone is maxed!' : `Costs $${costs.indCost} and ${costs.indResources} resources` },
                 );
 
             return interaction.reply({ embeds: [cityZonesEmbed] });

@@ -10,7 +10,7 @@ module.exports = {
 
         if (cityExists) {
             const city = await Cities.findOne({
-                attributes: ['name', 'happiness', 'population', 'balance', 'resources', 'crowdedness', 'traffic', 'pollution'],
+                attributes: ['userId', 'name', 'happiness', 'population', 'balance', 'resources', 'crowdedness', 'traffic', 'pollution'],
                 where: { userId: interaction.user.id },
             });
 

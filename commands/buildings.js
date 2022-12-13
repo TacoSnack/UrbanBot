@@ -10,7 +10,7 @@ module.exports = {
 
         if (cityExists) {
             const cityBuildings = await Cities.findOne({
-                attributes: ['name', 'plazasBuilt', 'busStationsBuilt'],
+                attributes: ['userId', 'name', 'plazasBuilt', 'busStationsBuilt'],
                 where: { userId: interaction.user.id },
             });
 
@@ -21,13 +21,18 @@ module.exports = {
                 busStationResources: (cityBuildings.busStationsBuilt + 1) * 500,
             }
 
+            const maxes = {
+                plazaMax: cityBuildings.plazasBuilt === 5,
+                busStationMax: cityBuildings.busStationsBuilt === 5,
+            }
+
             const cityBuildingsEmbed = new EmbedBuilder()
                 .setColor(0x73a0d0)
                 .setTitle(`${cityBuildings.name} | Buildings`)
                 .setDescription('Each building affects different stats. Use `/build [id]` to upgrade them.')
                 .addFields(
-                    { name: `⛲ Public plazas (\`plaza\`): ${cityBuildings.plazasBuilt}/5 built`, value: `Costs $${costs.plazaCost} and ${costs.plazaResources} resources.` },
-                    { name: `🚏 Bus stations (\`station\`): ${cityBuildings.busStationsBuilt}/5 built`, value: `Costs $${costs.busStationCost} and ${costs.busStationResources} resources.` },
+                    { name: `⛲ Public plazas (\`plaza\`): ${cityBuildings.plazasBuilt}/5 built${maxes.plazaMax ? ' ✅' : ''}`, value: maxes.plazaMax ? 'This building is maxed!' : `Costs $${costs.plazaCost} and ${costs.plazaResources} resources.` },
+                    { name: `🚏 Bus stations (\`station\`): ${cityBuildings.busStationsBuilt}/5 built${maxes.busStationMax ? ' ✅' : ''}`, value: maxes.busStationMax ? 'This building is maxed!' : `Costs $${costs.busStationCost} and ${costs.busStationResources} resources.` },
                 );
 
             return interaction.reply({ embeds: [cityBuildingsEmbed] });
