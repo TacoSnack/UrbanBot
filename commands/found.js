@@ -25,7 +25,7 @@ module.exports = {
 
                 const cityEmbed = new EmbedBuilder()
                     .setColor(0x73a0d0)
-                    .setTitle(city.name)
+                    .setTitle(`${city.name} | Stats`)
                     .setDescription('Here are your city\'s stats:')
                     .addFields(
                         { name: '😄 Happiness:', value: `${city.happiness}` },
