@@ -7,17 +7,17 @@ module.exports = {
         .setDescription('Build a building')
         .addStringOption(option =>
             option
-                .setName('id')
+                .setName('building')
                 .setDescription('The id of the building')
                 .setRequired(true)
         ),
     async execute(interaction) {
-        const buildingId = interaction.options.getString('id')
+        const buildingId = interaction.options.getString('building')
         const cityExists = await Cities.findByPk(interaction.user.id);
 
         if (cityExists) {
             const city = await Cities.findOne({
-                attributes: ['userId', 'name', 'balance', 'resources', 'plazasBuilt', 'busStationsBuilt'],
+                attributes: ['userId', 'balance', 'resources', 'plazasBuilt', 'busStationsBuilt'],
                 where: { userId: interaction.user.id },
             });
 
@@ -59,7 +59,7 @@ module.exports = {
                     await interaction.reply('You built a **bus station**!');
                     break;
                 default:
-                    return interaction.reply('Please enter a valid id!');
+                    return interaction.reply('Please enter a valid building id!');
             }
         } else {
             return interaction.reply('You haven\'t created a city! Use `/found` to create one!');

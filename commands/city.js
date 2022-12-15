@@ -23,7 +23,7 @@ module.exports = {
                 .addFields(
                     { name: '😄 Happiness:', value: `${f(city.happiness)}` },
                     { name: '🧍 Population:', value: `${f(city.population)}` },
-                    { name: '💵 Balance:', value: `${f(city.balance)}` },
+                    { name: '💵 Balance:', value: `$${f(city.balance)}` },
                     { name: '🪨 Resources:', value: `${f(city.resources)}` },
                     { name: '👨‍👩‍👧‍👦 Crowdedness:', value: `${f(city.crowdedness)}` },
                     { name: '🚗 Traffic:', value: `${f(city.traffic)}` },
