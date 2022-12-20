@@ -51,41 +51,49 @@ const Cities = db.define('cities', {
         type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 1,
+        validate: { max: 15 },
     },
     commercialLevel: {
         type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 1,
+        validate: { max: 15 },
     },
     industrialLevel: {
         type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 1,
+        validate: { max: 15 },
     },
     roadLevel: {
         type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 1,
+        validate: { max: 10 },
     },
     busLevel: {
         type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 0,
+        validate: { max: 10 },
     },
     parkLevel: {
         type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 0,
+        validate: { max: 10 },
     },
     plazasBuilt: {
         type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 0,
+        validate: { max: 5 },
     },
     busStationsBuilt: {
         type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 0,
+        validate: { max: 5 },
     },
 });
 

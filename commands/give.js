@@ -4,17 +4,42 @@ const { SlashCommandBuilder } = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('give')
-        .setDescription('temp command'),
+        .setDescription('STAFF ONLY')
+        .addUserOption(option =>
+            option
+                .setName('user')
+                .setDescription('the target user')
+                .setRequired(true)
+        )
+        .addStringOption(option =>
+            option
+                .setName('money')
+                .setDescription('The amount of money')
+                .setRequired(true)
+        )
+        .addStringOption(option =>
+            option
+                .setName('resources')
+                .setDescription('The amount of resources')
+                .setRequired(true)
+        ),
     async execute(interaction) {
+        if (interaction.user.id !== '768584481795342356') return interaction.reply({ content: 'This is a staff only command!', ephemeral: true });
+
+        const targetUser = interaction.options.getUser('user');
+        const moneyAmount = interaction.options.getString('money');
+        const resourcesAmount = interaction.options.getString('resources');
+
         const city = await Cities.findOne({
             attributes: ['userId', 'balance', 'resources'],
-            where: { userId: interaction.user.id },
+            where: { userId: targetUser.id },
         });
 
         await city.increment({
-            'balance': 10000,
-            'resources': 10000,
+            'balance': moneyAmount,
+            'resources': resourcesAmount,
         });
-        return interaction.reply('success');
+
+        return interaction.reply('Money/resources has been awarded!');
     }
 }
