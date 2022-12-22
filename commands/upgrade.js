@@ -74,7 +74,7 @@ module.exports = {
                 switch (zoneId) {
                     case 'res':
                         if (maxes.resMax) return interaction.reply('This zone is maxed!');
-                        if (city.balance < costs.resCost || city.balance < costs.resResources) return interaction.reply('You can\'t afford this upgrade!');
+                        if (city.balance < costs.resCost || city.resources < costs.resResources) return interaction.reply('You can\'t afford this upgrade!');
 
                         await upgrade('residentialLevel', costs.resCost, costs.resResources);
 

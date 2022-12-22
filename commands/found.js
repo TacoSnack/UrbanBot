@@ -17,31 +17,26 @@ module.exports = {
         const cityAlreadyExists = await Cities.findByPk(interaction.user.id);
 
         if (!cityAlreadyExists) {
-            try {
-                const city = await Cities.create({
-                    userId: interaction.user.id,
-                    name: name,
-                });
+            const city = await Cities.create({
+                userId: interaction.user.id,
+                name: name,
+            });
 
-                const cityEmbed = new EmbedBuilder()
-                    .setColor(0x73a0d0)
-                    .setTitle(`${city.name} | Stats`)
-                    .setDescription('Here are your city\'s stats:')
-                    .addFields(
-                        { name: '😄 Happiness:', value: `${city.happiness}` },
-                        { name: '🧍 Population:', value: `${city.population}` },
-                        { name: '💵 Balance:', value: `$${city.balance}` },
-                        { name: '🪨 Resources:', value: `${city.resources}` },
-                        { name: '👨‍👩‍👧‍👦 Crowdedness:', value: `${city.crowdedness}` },
-                        { name: '🚗 Traffic:', value: `${city.traffic}` },
-                        { name: '🛢️ Pollution:', value: `${city.pollution}` },
-                    );
+            const cityEmbed = new EmbedBuilder()
+                .setColor(0x73a0d0)
+                .setTitle(`${city.name} | Stats`)
+                .setDescription('Here are your city\'s stats:')
+                .addFields(
+                    { name: '😄 Happiness:', value: `${city.happiness}` },
+                    { name: '🧍 Population:', value: `${city.population}` },
+                    { name: '💵 Balance:', value: `$${city.balance}` },
+                    { name: '🪨 Resources:', value: `${city.resources}` },
+                    { name: '👨‍👩‍👧‍👦 Crowdedness:', value: `${city.crowdedness}` },
+                    { name: '🚗 Traffic:', value: `${city.traffic}` },
+                    { name: '🛢️ Pollution:', value: `${city.pollution}` },
+                );
 
-                return interaction.reply({ content: 'Your city has been created!', embeds: [cityEmbed] });
-            } catch (error) {
-                await interaction.reply({ content: 'An error occurred while creating your city. Support server: https://discord.gg/XuZNNJbf4U', ephemeral: true });
-                return console.error(error);
-            }
+            return interaction.reply({ content: 'Your city has been created!', embeds: [cityEmbed] });
         } else {
             return interaction.reply('Your city already exists!');
         }
