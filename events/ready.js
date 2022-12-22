@@ -7,4 +7,4 @@ module.exports = {
         client.user.setActivity('your cities grow | /invite', { type: ActivityType.Watching })
         console.log(`Logged in as ${client.user.tag}!`);
     },
-};
+}

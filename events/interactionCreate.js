@@ -14,4 +14,4 @@ module.exports = {
             await interaction.reply({ content: 'An unknown error occurred. Support server: https://discord.gg/XuZNNJbf4U', ephemeral: true });
         }
     },
-};
+}
