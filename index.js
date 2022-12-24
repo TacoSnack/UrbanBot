@@ -9,7 +9,7 @@ client.commands = new Collection();
 client.cooldowns = new Collection();
 
 if (topggToken !== 'TEST') {
-    const ap = new AutoPoster(topggToken, client);
+    const ap = AutoPoster(topggToken, client);
 
     ap.on('posted', (stats) => {
         console.log(`Successfully posted bot stats to Top.gg, UrbanBot is on ${stats.serverCount} servers.`);
