@@ -38,7 +38,7 @@ Join the UrbanBot Support Discord server [here!](https://discord.gg/XuZNNJbf4U)
 
 ## Contribute
 
-If you find any bugs or issues feel free to create a [pull request!](https://github.com/TacoSnack/UrbanBot/pulls)
+If you find any bugs or issues, feel free to create a [pull request!](https://github.com/TacoSnack/UrbanBot/pulls)
 
 ## Running Locally
 
@@ -48,8 +48,9 @@ After cloning the repository, create a `config.json` file.
 
 ```json
 {
-    "token": "YOUR TEST BOT TOKEN",
-    "clientID": "YOUR TEST BOT CLIENT ID"
+    "token": "<YOUR TEST BOT TOKEN>",
+    "clientID": "<YOUR TEST BOT CLIENT ID>",
+    "topggToken": "TEST"
 }
 ```
 

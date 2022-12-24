@@ -1,11 +1,20 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
-const { token } = require('./config.json');
+const { AutoPoster } = require('topgg-autoposter');
+const { token, topggToken } = require('./config.json');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
 client.cooldowns = new Collection();
+
+if (topggToken !== 'TEST') {
+    const ap = new AutoPoster(topggToken, client);
+
+    ap.on('posted', (stats) => {
+        console.log(`Successfully posted bot stats to Top.gg, UrbanBot is on ${stats.serverCount} servers.`);
+    });
+}
 
 const eventsPath = path.join(__dirname, 'events');
 const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
