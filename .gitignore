@@ -3,5 +3,3 @@ node_modules
 config.json
 
 database.sqlite
-
-transfer-db.js

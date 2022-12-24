@@ -1,8 +1,6 @@
-[![](https://dcbadge.vercel.app/api/server/XuZNNJbf4U)](https://discord.gg/XuZNNJbf4U)
-
 # UrbanBot
 
-UrbanBot is a fun economy bot where you create your own virtual city!
+UrbanBot is a fun economy bot where you create a virtual city!
 
 ## Features
 
