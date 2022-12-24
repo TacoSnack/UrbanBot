@@ -9,10 +9,10 @@ module.exports = {
     async execute(interaction) {
         const f = (number) => commaNumber(number);
         const cityExists = await Cities.findByPk(interaction.user.id);
-        const cooldowns = interaction.client.cooldowns;
+        const cooldown = interaction.client.collectCooldown;
 
         if (cityExists) {
-            if (cooldowns.has(interaction.user.id)) return interaction.reply({ content: 'You can only collect taxes every **10 minutes**!', ephemeral: true });
+            if (cooldown.has(interaction.user.id)) return interaction.reply({ content: 'You can only collect taxes every **10 minutes**!', ephemeral: true });
 
             const city = await Cities.findOne({
                 attributes: ['userId', 'name', 'happiness', 'population', 'balance', 'resources', 'crowdedness', 'traffic', 'pollution', 'residentialLevel', 'commercialLevel', 'industrialLevel', 'roadLevel', 'busLevel', 'parkLevel', 'plazasBuilt', 'busStationsBuilt'],
@@ -68,9 +68,9 @@ module.exports = {
 
             await interaction.reply({ content: 'You collected your taxes!', embeds: [newCityEmbed] });
 
-            cooldowns.set(interaction.user.id, true);
+            cooldown.set(interaction.user.id, true);
             setTimeout(() => {
-                cooldowns.delete(interaction.user.id);
+                cooldown.delete(interaction.user.id);
             }, 600000);
         } else {
             return interaction.reply('You haven\'t created a city! Use `/found` to create one!');
