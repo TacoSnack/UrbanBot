@@ -17,10 +17,10 @@ module.exports = {
             });
 
             const costs = {
-                roadCost: (cityServices.roadLevel + 1) * 1000,
-                roadResources: (cityServices.roadLevel + 1) * 500,
-                busCost: (cityServices.busLevel + 1) * 2000,
-                busResources: (cityServices.busLevel + 1) * 1000,
+                roadCost: (cityServices.roadLevel + 1) * 500,
+                roadResources: (cityServices.roadLevel + 1) * 300,
+                busCost: (cityServices.busLevel + 1) * 800,
+                busResources: (cityServices.busLevel + 1) * 800,
                 parkCost: (cityServices.parkLevel + 1) * 1000,
                 parkResources: (cityServices.parkLevel + 1) * 800,
             }

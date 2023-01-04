@@ -37,16 +37,16 @@ module.exports = {
             });
 
             const costs = {
-                resCost: (city.residentialLevel + 1) * 800,
-                resResources: (city.residentialLevel + 1) * 800,
+                resCost: (city.residentialLevel + 1) * 2000,
+                resResources: (city.residentialLevel + 1) * 1500,
                 comCost: (city.commercialLevel + 1) * 1000,
                 comResources: (city.commercialLevel + 1) * 800,
-                indCost: (city.industrialLevel + 1) * 1000,
-                indResources: (city.industrialLevel + 1) * 1500,
-                roadCost: (city.roadLevel + 1) * 1000,
-                roadResources: (city.roadLevel + 1) * 500,
-                busCost: (city.busLevel + 1) * 2000,
-                busResources: (city.busLevel + 1) * 1000,
+                indCost: (city.industrialLevel + 1) * 900,
+                indResources: (city.industrialLevel + 1) * 800,
+                roadCost: (city.roadLevel + 1) * 500,
+                roadResources: (city.roadLevel + 1) * 300,
+                busCost: (city.busLevel + 1) * 800,
+                busResources: (city.busLevel + 1) * 800,
                 parkCost: (city.parkLevel + 1) * 1000,
                 parkResources: (city.parkLevel + 1) * 800,
             }

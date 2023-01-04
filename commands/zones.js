@@ -17,12 +17,12 @@ module.exports = {
             });
 
             const costs = {
-                resCost: (cityZones.residentialLevel + 1) * 800,
-                resResources: (cityZones.residentialLevel + 1) * 800,
+                resCost: (cityZones.residentialLevel + 1) * 2000,
+                resResources: (cityZones.residentialLevel + 1) * 1500,
                 comCost: (cityZones.commercialLevel + 1) * 1000,
                 comResources: (cityZones.commercialLevel + 1) * 800,
-                indCost: (cityZones.industrialLevel + 1) * 1000,
-                indResources: (cityZones.industrialLevel + 1) * 1500,
+                indCost: (cityZones.industrialLevel + 1) * 900,
+                indResources: (cityZones.industrialLevel + 1) * 800,
             }
 
             const maxes = {
