@@ -43,12 +43,12 @@ module.exports = {
                 comResources: (city.commercialLevel + 1) * 800,
                 indCost: (city.industrialLevel + 1) * 900,
                 indResources: (city.industrialLevel + 1) * 800,
-                roadCost: (city.roadLevel + 1) * 500,
-                roadResources: (city.roadLevel + 1) * 300,
-                busCost: (city.busLevel + 1) * 800,
-                busResources: (city.busLevel + 1) * 800,
-                parkCost: (city.parkLevel + 1) * 1000,
-                parkResources: (city.parkLevel + 1) * 800,
+                roadCost: (city.roadLevel + 1) * 750,
+                roadResources: (city.roadLevel + 1) * 450,
+                busCost: (city.busLevel + 1) * 1200,
+                busResources: (city.busLevel + 1) * 1200,
+                parkCost: (city.parkLevel + 1) * 1500,
+                parkResources: (city.parkLevel + 1) * 1200,
             }
 
             const maxes = {

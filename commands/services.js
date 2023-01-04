@@ -17,12 +17,12 @@ module.exports = {
             });
 
             const costs = {
-                roadCost: (cityServices.roadLevel + 1) * 500,
-                roadResources: (cityServices.roadLevel + 1) * 300,
-                busCost: (cityServices.busLevel + 1) * 800,
-                busResources: (cityServices.busLevel + 1) * 800,
-                parkCost: (cityServices.parkLevel + 1) * 1000,
-                parkResources: (cityServices.parkLevel + 1) * 800,
+                roadCost: (cityServices.roadLevel + 1) * 750,
+                roadResources: (cityServices.roadLevel + 1) * 450,
+                busCost: (cityServices.busLevel + 1) * 1200,
+                busResources: (cityServices.busLevel + 1) * 1200,
+                parkCost: (cityServices.parkLevel + 1) * 1500,
+                parkResources: (cityServices.parkLevel + 1) * 1200,
             }
 
             const maxes = {

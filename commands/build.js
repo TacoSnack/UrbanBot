@@ -22,10 +22,10 @@ module.exports = {
             });
 
             const costs = {
-                plazaCost: (city.plazasBuilt + 1) * 300,
-                plazaResources: (city.plazasBuilt + 1) * 200,
-                busStationCost: (city.busStationsBuilt + 1) * 200,
-                busStationResources: (city.busStationsBuilt + 1) * 180,
+                plazaCost: (city.plazasBuilt + 1) * 900,
+                plazaResources: (city.plazasBuilt + 1) * 600,
+                busStationCost: (city.busStationsBuilt + 1) * 600,
+                busStationResources: (city.busStationsBuilt + 1) * 540,
             }
 
             const maxes = {

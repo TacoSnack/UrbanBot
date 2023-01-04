@@ -48,8 +48,8 @@ After cloning the repository, create a `config.json` file.
 
 ```json
 {
-    "token": "<YOUR TEST BOT TOKEN>",
-    "clientID": "<YOUR TEST BOT CLIENT ID>",
+    "token": "<token>",
+    "clientID": "<client id>",
     "topggToken": "TEST"
 }
 ```
