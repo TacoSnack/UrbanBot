@@ -7,6 +7,7 @@ const { token, topggToken } = require('./config.json');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
 client.collectCooldown = new Collection();
+client.dailyCooldown = new Collection();
 
 if (topggToken !== 'TEST') {
     const ap = AutoPoster(topggToken, client);

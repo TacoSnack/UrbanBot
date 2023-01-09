@@ -1,6 +1,6 @@
 {
   "name": "urbanbot",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "UrbanBot is a fun economy bot where you create a city and manage its growth!",
   "main": "index.js",
   "scripts": {
