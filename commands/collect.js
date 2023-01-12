@@ -28,7 +28,7 @@ module.exports = {
                 pollution: Math.floor((city.industrialLevel * 95 - (city.busLevel * 15 + city.parkLevel * 20)) / 10),
             }
 
-            const newTotalHappiness = Math.floor((newStats.population / 10) + newStats.balance + newStats.resources - newStats.crowdedness - newStats.traffic - newStats.pollution);
+            const newTotalHappiness = Math.floor((newStats.population / 10) + (newStats.balance / 2) + (newStats.resources * 4) - newStats.crowdedness - newStats.traffic - newStats.pollution);
 
             const changes = {
                 population: newStats.population - city.population,
