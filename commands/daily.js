@@ -29,7 +29,7 @@ module.exports = {
                 'resources': newBalance.resources,
             });
 
-            await interaction.reply(`You collected your daily reward and earned **$${newBalance.balance}** and **${newBalance.resources}** resources!`);
+            await interaction.reply(`You collected your daily reward and earned **$${f(newBalance.balance)}** and **${f(newBalance.resources)}** resources!`);
 
             cooldown.set(interaction.user.id, true);
             setTimeout(() => {
