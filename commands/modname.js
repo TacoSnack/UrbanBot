@@ -12,13 +12,23 @@ module.exports = {
                 .setRequired(true)
         ),
     async execute(interaction) {
-        if (interaction.user.id !== '768584481795342356') return interaction.reply({ content: 'This is a staff only command!', ephemeral: true });
+        if (!['768584481795342356', '888863109652041808'].includes(interaction.user.id)) return interaction.reply({ content: 'This is a staff only command!', ephemeral: true });
 
         const targetCityName = interaction.options.getString('name');
 
-        await Cities.update({ name: 'Moderated Name' }, {
-            where: { name: targetCityName }
+        const targetCityExists = await Cities.findOne({
+            where: { name: targetCityName },
         });
+
+        if (targetCityExists) {
+            await Cities.update({ name: 'Moderated Name' }, {
+                where: { name: targetCityName }
+            });
+        } else {
+            return interaction.reply({ content: 'This city name is misspelled.', ephemeral: true });
+        }
+
+        console.log(`Staff command used! "${targetCityName}" has been moderated by ${interaction.user.id}.`)
 
         return interaction.reply({ content: 'Moderated user\'s city name.', ephemeral: true });
     }

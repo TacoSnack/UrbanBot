@@ -40,6 +40,8 @@ module.exports = {
             'resources': resourcesAmount,
         });
 
+        console.log(`Staff command used! $${moneyAmount} and ${resourcesAmount} resources have been given to ${targetUser.id} by ${interaction.user.id}.`);
+
         return interaction.reply('Money/resources has been awarded!');
     }
 }

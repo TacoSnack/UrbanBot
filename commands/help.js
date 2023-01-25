@@ -13,11 +13,10 @@ module.exports = {
                 { name: '/found', value: 'Found your city!' },
                 { name: '/city', value: 'View your city.' },
                 { name: '/invite', value: 'Invite UrbanBot to your server!' },
-                { name: '/collect', value: 'Collect your daily taxes.' },
+                { name: '/collect', value: 'Collect your citizens\' taxes.' },
+                { name: '/daily', value: 'Collect your daily reward!' },
                 { name: '/zones, /services, /buildings', value: 'View your city\'s zones, services, and buildings.' },
                 { name: '/upgrade zone, /upgrade service, /build', value: 'Upgrade/build your city\'s zones, services, or buildings.' },
-                { name: '/policies', value: 'View your city\'s policies.' },
-                { name: '/add', value: 'Add a policy to your city.' },
                 { name: '/leaderboard', value: 'View the top 10 best cities!' },
                 { name: '/stats', value: 'View UrbanBot\'s stats!' },
             );

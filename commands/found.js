@@ -36,6 +36,8 @@ module.exports = {
                     { name: '🛢️ Pollution:', value: `${city.pollution}` },
                 );
 
+            console.log(`New city created! "${city.name}" (id: ${interaction.user.id})`);
+
             return interaction.reply({ content: 'Your city has been created!', embeds: [cityEmbed] });
         } else {
             return interaction.reply('Your city already exists!');
