@@ -1,5 +1,6 @@
 const { Cities } = require('../models/cities.js');
 const { SlashCommandBuilder } = require('discord.js');
+const { developers } = require('../config.json');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -24,7 +25,7 @@ module.exports = {
                 .setRequired(true)
         ),
     async execute(interaction) {
-        if (interaction.user.id !== '768584481795342356') return interaction.reply({ content: 'This is a staff only command!', ephemeral: true });
+        if (!developers.includes(interaction.user.id)) return interaction.reply({ content: 'This is a staff only command!', ephemeral: true });
 
         const targetUser = interaction.options.getUser('user');
         const moneyAmount = interaction.options.getString('money');

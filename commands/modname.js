@@ -1,5 +1,6 @@
 const { Cities } = require('../models/cities.js');
 const { SlashCommandBuilder } = require('discord.js');
+const { moderators } = require('../config.json');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -12,7 +13,7 @@ module.exports = {
                 .setRequired(true)
         ),
     async execute(interaction) {
-        if (!['768584481795342356', '888863109652041808'].includes(interaction.user.id)) return interaction.reply({ content: 'This is a staff only command!', ephemeral: true });
+        if (!moderators.includes(interaction.user.id)) return interaction.reply({ content: 'This is a staff only command!', ephemeral: true });
 
         const targetCityName = interaction.options.getString('name');
 

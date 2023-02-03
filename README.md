@@ -50,6 +50,8 @@ After cloning the repository, create a `config.json` file.
 {
     "token": "<token>",
     "clientID": "<client id>",
+    "developers": ["<your user id>"],
+    "moderators": ["<your user id>"],
     "topggToken": "TEST",
     "webhookAuth": "TEST"
 }
