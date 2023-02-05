@@ -6,7 +6,7 @@ const { token, topggToken, webhookAuth } = require('./config.json');
 const { Webhook } = require('@top-gg/sdk');
 const app = require('express')();
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages] });
 client.commands = new Collection();
 client.collectCooldown = new Collection();
 client.dailyCooldown = new Collection();
