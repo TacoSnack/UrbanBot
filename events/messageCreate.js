@@ -7,7 +7,7 @@ module.exports = {
         try {
             if (message.author.bot) return;
             if (!message.mentions.has(clientID)) return;
-            if (message.channel.permissionsFor(client.user).toArray().includes(PermissionsBitField.Flags.SendMessages)) return;
+            if (!message.channel.permissionsFor(client.user).toArray().includes(PermissionsBitField.Flags.SendMessages)) return;
 
             return message.reply('Hi there! You can create your city with `/found`!!!');
         } catch (error) {
