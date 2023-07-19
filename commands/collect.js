@@ -28,7 +28,7 @@ module.exports = {
                 pollution: Math.floor((city.industrialLevel * 95 - (city.busLevel * 15 + city.parkLevel * 20)) / 10),
             }
 
-            const newTotalHappiness = Math.floor((newStats.population / 10) + (newStats.balance / 2) + (newStats.resources * 4) - newStats.crowdedness - newStats.traffic - newStats.pollution);
+            const newTotalHappiness = Math.floor((newStats.population / 8) + (newStats.balance / 1.5) + newStats.resources - newStats.crowdedness - newStats.traffic - newStats.pollution);
 
             const changes = {
                 population: newStats.population - city.population,
@@ -54,7 +54,7 @@ module.exports = {
                     { name: '🛢️ Pollution:', value: `${f(newStats.pollution)} \`${changes.pollution < 0 ? '' : '+'}${f(changes.pollution)}\`` },
                 );
 
-            await Cities.update({
+            await city.update({
                 happiness: newTotalHappiness,
                 population: newStats.population,
                 balance: newStats.balance,
@@ -62,8 +62,6 @@ module.exports = {
                 crowdedness: newStats.crowdedness,
                 traffic: newStats.traffic,
                 pollution: newStats.pollution,
-            }, {
-                where: { userId: interaction.user.id },
             });
 
             await interaction.reply({ content: 'You collected your taxes!', embeds: [newCityEmbed] });
