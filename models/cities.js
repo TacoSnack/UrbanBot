@@ -32,6 +32,11 @@ const Cities = db.define('cities', {
         allowNull: false,
         defaultValue: 500,
     },
+    safety: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 50,
+    },
     crowdedness: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -83,6 +88,18 @@ const Cities = db.define('cities', {
         defaultValue: 0,
         validate: { max: 10 },
     },
+    policeLevel: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
+        validate: { max: 10 },
+    },
+    fireLevel: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
+        validate: { max: 10 },
+    },
     plazasBuilt: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -90,6 +107,12 @@ const Cities = db.define('cities', {
         validate: { max: 5 },
     },
     busStationsBuilt: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
+        validate: { max: 5 },
+    },
+    hospitalsBuilt: {
         type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 0,
