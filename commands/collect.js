@@ -23,7 +23,7 @@ module.exports = {
                 population: Math.floor(city.population + city.residentialLevel * 1000),
                 balance: Math.floor(city.balance + city.commercialLevel * 150),
                 resources: Math.floor(city.resources + city.industrialLevel * 100),
-//              safety: Math.floor(city.safety + city.policeLevel * 5 + city.fireLevel * 5 + city.hospitalLevel * 11),
+//              safety: Math.floor(city.safety + city.policeLevel * 4 + city.fireLevel * 4 + city.hospitalLevel * 10),
                 crowdedness: Math.floor((city.residentialLevel * 95 - (city.parkLevel * 20 + city.plazasBuilt * 15)) / 10),
                 traffic: Math.floor((city.commercialLevel * 90 - (city.roadLevel * 6 + city.busLevel * 12 + city.busStationsBuilt * 6)) / 10),
                 pollution: Math.floor((city.industrialLevel * 95 - (city.busLevel * 15 + city.parkLevel * 20)) / 10),

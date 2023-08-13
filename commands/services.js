@@ -12,7 +12,7 @@ module.exports = {
 
         if (cityExists) {
             const cityServices = await Cities.findOne({
-                attributes: ['userId', 'name', 'roadLevel', 'busLevel', 'parkLevel'],
+                attributes: ['userId', 'name', 'roadLevel', 'busLevel', 'parkLevel', 'policeLevel', 'fireLevel'],
                 where: { userId: interaction.user.id },
             });
 
@@ -23,12 +23,18 @@ module.exports = {
                 busResources: (cityServices.busLevel + 1) * 1200,
                 parkCost: (cityServices.parkLevel + 1) * 1500,
                 parkResources: (cityServices.parkLevel + 1) * 1200,
+                policeCost: (cityServices.policeLevel + 1) * 1200,
+                policeResources: (cityServices.policeLevel + 1) * 1100,
+                fireCost: (cityServices.fireLevel + 1) * 1200,
+                fireResources: (cityServices.fireLevel + 1) * 1300,
             }
 
             const maxes = {
                 roadMax: cityServices.roadLevel === 10,
                 busMax: cityServices.busLevel === 10,
                 parkMax: cityServices.parkLevel === 10,
+                policeMax: cityServices.policeLevel === 10,
+                fireMax: cityServices.fireLevel === 10,
             }
 
             const cityServicesEmbed = new EmbedBuilder()
@@ -39,6 +45,8 @@ module.exports = {
                     { name: `🛣️ Road network (\`roads\`): Level ${cityServices.roadLevel}/10${maxes.roadMax ? ' ✅' : ''}`, value: maxes.roadMax ? 'This service is maxed!' : `Costs $${f(costs.roadCost)} and ${f(costs.roadResources)} resources.` },
                     { name: `🚌 Bus network (\`buses\`): Level ${cityServices.busLevel}/10${maxes.busMax ? ' ✅' : ''}`, value: maxes.busMax ? 'This service is maxed!' : `Costs $${f(costs.busCost)} and ${f(costs.busResources)} resources.` },
                     { name: `🏞️ Parks (\`parks\`): Level ${cityServices.parkLevel}/10${maxes.parkMax ? ' ✅' : ''}`, value: maxes.parkMax ? 'This service is maxed!' : `Costs $${f(costs.parkCost)} and ${f(costs.parkResources)} resources.` },
+                    { name: `🚓 Police Department (\`police\`): Level ${cityServices.policeLevel}/10${maxes.policeMax ? ' ✅' : ''}`, value: maxes.policeMax ? 'This service is maxed!' : `Costs $${f(costs.policeCost)} and ${f(costs.policeResources)} resources.` },
+                    { name: `🔥 Fire Department (\`fire\`): Level ${cityServices.fireLevel}/10${maxes.fireMax ? ' ✅' : ''}`, value: maxes.fireMax ? 'This service is maxed!' : `Costs $${f(costs.fireCost)} and ${f(costs.fireResources)} resources.` },
                 );
 
             return interaction.reply({ embeds: [cityServicesEmbed] });

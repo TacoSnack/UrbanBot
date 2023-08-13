@@ -12,7 +12,7 @@ module.exports = {
 
         if (cityExists) {
             const city = await Cities.findOne({
-                attributes: ['userId', 'name', 'happiness', 'population', 'balance', 'resources', 'crowdedness', 'traffic', 'pollution'],
+                attributes: ['userId', 'name', 'happiness', 'population', 'balance', 'resources', 'safety', 'crowdedness', 'traffic', 'pollution'],
                 where: { userId: interaction.user.id },
             });
 
@@ -25,6 +25,7 @@ module.exports = {
                     { name: '🧍 Population:', value: `${f(city.population)}` },
                     { name: '💵 Balance:', value: `$${f(city.balance)}` },
                     { name: '🪨 Resources:', value: `${f(city.resources)}` },
+                    { name: '🦺 Safety:', value: `${f(city.safety)}` },
                     { name: '👨‍👩‍👧‍👦 Crowdedness:', value: `${f(city.crowdedness)}` },
                     { name: '🚗 Traffic:', value: `${f(city.traffic)}` },
                     { name: '🛢️ Pollution:', value: `${f(city.pollution)}` },
