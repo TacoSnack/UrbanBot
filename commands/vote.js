@@ -20,10 +20,10 @@ module.exports = {
         const cooldown = interaction.client.voteCooldown;
 
         if (interaction.options.getSubcommand() === 'link') {
-            return interaction.reply('Vote for UrbanBot here: https://top.gg/bot/1025198176547909693/vote');
+            return interaction.reply('Vote for UrbanBot here: <https://top.gg/bot/1025198176547909693/vote>');
         } else if (interaction.options.getSubcommand() === 'claim') {
             if (cityExists) {
-                if (!cooldown.has(interaction.user.id)) return interaction.reply('You haven\'t voted yet! Vote for UrbanBot here: https://top.gg/bot/1025198176547909693/vote');
+                if (!cooldown.has(interaction.user.id)) return interaction.reply('You haven\'t voted yet! Vote for UrbanBot here: <https://top.gg/bot/1025198176547909693/vote>');
 
                 const cityBalance = await Cities.findOne({
                     attributes: ['userId', 'balance', 'resources'],

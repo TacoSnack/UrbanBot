@@ -8,17 +8,13 @@ module.exports = {
         const helpEmbed = new EmbedBuilder()
             .setColor(0x73a0d0)
             .setTitle('Help and Info')
-            .setDescription('Join the [support server](https://discord.gg/XuZNNJbf4U) for extra help.')
+            .setDescription('Join the [support server](https://discord.gg/XuZNNJbf4U) for help.')
             .addFields(
-                { name: '/found', value: 'Found your city!' },
-                { name: '/city', value: 'View your city.' },
-                { name: '/invite', value: 'Invite UrbanBot to your server!' },
-                { name: '/collect', value: 'Collect your citizens\' taxes.' },
-                { name: '/daily', value: 'Collect your daily reward!' },
-                { name: '/zones, /services, /buildings', value: 'View your city\'s zones, services, and buildings.' },
-                { name: '/upgrade zone, /upgrade service, /build', value: 'Upgrade/build your city\'s zones, services, or buildings.' },
-                { name: '/leaderboard', value: 'View the top 10 best cities!' },
-                { name: '/stats', value: 'View UrbanBot\'s stats!' },
+                { name: 'Start your city:', value: '/found, /city, /invite, /support' },
+                { name: 'Make money:', value: '/collect, /daily, /vote' },
+                { name: 'View your city:', value: '/balance, /zones, /services, /buildings' },
+                { name: 'Upgrade your city:', value: '/upgrade, /build' },
+                { name: 'View bot info:', value: '/leaderboard, /stats, /help, /carrd' },
             );
 
         return interaction.reply({ embeds: [helpEmbed] });
