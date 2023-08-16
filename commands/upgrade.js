@@ -32,7 +32,7 @@ module.exports = {
 
         if (cityExists) {
             const city = await Cities.findOne({
-                attributes: ['userId', 'balance', 'resources', 'residentialLevel', 'commercialLevel', 'industrialLevel', 'roadLevel', 'busLevel', 'parkLevel'],
+                attributes: ['userId', 'balance', 'resources', 'residentialLevel', 'commercialLevel', 'industrialLevel', 'roadLevel', 'busLevel', 'parkLevel', 'policeLevel', 'fireLevel'],
                 where: { userId: interaction.user.id },
             });
 
@@ -49,6 +49,10 @@ module.exports = {
                 busResources: (city.busLevel + 1) * 1200,
                 parkCost: (city.parkLevel + 1) * 1500,
                 parkResources: (city.parkLevel + 1) * 1200,
+                policeCost: (city.policeLevel + 1) * 1200,
+                policeResources: (city.policeLevel + 1) * 1100,
+                fireCost: (city.fireLevel + 1) * 1200,
+                fireResources: (city.fireLevel + 1) * 1300,
             }
 
             const maxes = {
@@ -58,6 +62,8 @@ module.exports = {
                 roadMax: city.roadLevel === 10,
                 busMax: city.busLevel === 10,
                 parkMax: city.parkLevel === 10,
+                policeMax: city.policeLevel === 10,
+                fireMax: city.fireLevel === 10,
             }
 
             const upgrade = async (id, cost, resources) => {
@@ -78,7 +84,7 @@ module.exports = {
 
                         await upgrade('residentialLevel', costs.resCost, costs.resResources);
 
-                        await interaction.reply('You upgraded your **residential zones**!');
+                        await interaction.reply('You upgraded your **residential zones!**');
                         break;
                     case 'com':
                         if (maxes.comMax) return interaction.reply('This zone is maxed!');
@@ -86,7 +92,7 @@ module.exports = {
 
                         await upgrade('commercialLevel', costs.comCost, costs.comResources);
 
-                        await interaction.reply('You upgraded your **commercial zones**!');
+                        await interaction.reply('You upgraded your **commercial zones!**');
                         break;
                     case 'ind':
                         if (maxes.indMax) return interaction.reply('This zone is maxed!');
@@ -94,7 +100,7 @@ module.exports = {
 
                         await upgrade('industrialLevel', costs.indCost, costs.indResources);
 
-                        await interaction.reply('You upgraded your **industrial zones**!');
+                        await interaction.reply('You upgraded your **industrial zones!**');
                         break;
                     default:
                         return interaction.reply('Please enter a valid zone id!');
@@ -109,7 +115,7 @@ module.exports = {
 
                         await upgrade('roadLevel', costs.roadCost, costs.roadResources);
 
-                        await interaction.reply('You upgraded your **road network**!');
+                        await interaction.reply('You upgraded your **road network!**');
                         break;
                     case 'buses':
                         if (maxes.busMax) return interaction.reply('This service is maxed!');
@@ -117,7 +123,7 @@ module.exports = {
 
                         await upgrade('busLevel', costs.busCost, costs.busResources);
                             
-                        await interaction.reply('You upgraded your **bus network**!');
+                        await interaction.reply('You upgraded your **bus network!**');
                         break;
                     case 'parks':
                         if (maxes.parkMax) return interaction.reply('This service is maxed!');
@@ -125,7 +131,23 @@ module.exports = {
 
                         await upgrade('parkLevel', costs.parkCost, costs.parkResources);
 
-                        await interaction.reply('You upgraded your **parks**!');
+                        await interaction.reply('You upgraded your **parks!**');
+                        break;
+                    case 'police':
+                        if (maxes.policeMax) return interaction.reply('This service is maxed!');
+                        if (city.balance < costs.policeCost || city.resources < costs.policeResources) return interaction.reply('You can\'t afford this upgrade!');
+
+                        await upgrade('policeLevel', costs.policeCost, costs.policeResources);
+
+                        await interaction.reply('You upgraded your **police department!**');
+                        break;
+                    case 'fire':
+                        if (maxes.fireMax) return interaction.reply('This service is maxed!');
+                        if (city.balance < costs.fireCost || city.resources < costs.fireResources) return interaction.reply('You can\'t afford this upgrade!');
+
+                        await upgrade('fireLevel', costs.fireCost, costs.fireResources);
+
+                        await interaction.reply('You upgraded your **fire department!**');
                         break;
                     default:
                         return interaction.reply('Please enter a valid service id');
