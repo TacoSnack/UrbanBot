@@ -1,4 +1,4 @@
-# UrbanBot is no longer supprted by me but should probally still work.
+# UrbanBot is no longer supported by me but should probally still work.
 
 # UrbanBot
 
