@@ -1,3 +1,5 @@
+# UrbanBot is no longer supprted by me but should probally still work.
+
 # UrbanBot
 
 UrbanBot is a fun economy bot where you create a virtual city!
