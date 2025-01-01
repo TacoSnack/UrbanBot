@@ -34,8 +34,6 @@ Join the UrbanBot Support Discord server [here!](https://discord.gg/XuZNNJbf4U)
 
 - 😎 A fun community!
 
-- 🏳️‍🌈 LGTBQIA+ and kid-friendly!
-
 ## Contribute
 
 If you find any bugs or issues, feel free to create a [pull request!](https://github.com/TacoSnack/UrbanBot/pulls)
